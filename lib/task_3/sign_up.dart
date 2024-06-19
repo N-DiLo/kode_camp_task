@@ -1,5 +1,11 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kode_camp_task/components/my_button.dart';
+import 'package:kode_camp_task/components/my_text_widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -23,44 +29,67 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Create New Account',
-                style: GoogleFonts.montserrat(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600,
-                ),
+              const MyText(
+                text: 'Create New Account',
+                fontSize: 25,
+                fontWeight: FontWeight.w600,
               ),
               SizedBox(height: height * .04),
-              Text(
-                'Name',
-                style: GoogleFonts.montserrat(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
+              const MyText(
+                text: 'Name',
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(height: height * .06),
+              MyButton(
+                title: 'Register',
+                onTap: () {},
+              ),
+              SizedBox(height: height * .02),
+              Center(
+                child: Text.rich(
+                  TextSpan(
+                    children: [
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: SizedBox(
+                          width: width * .3,
+                          child: const Divider(
+                            thickness: 2,
+                            color: Color.fromARGB(255, 212, 210, 210),
+                          ),
+                        ),
+                      ),
+                      TextSpan(
+                          text: ' or register using ',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          )),
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: SizedBox(
+                          width: width * .3,
+                          child: const Divider(
+                            thickness: 2,
+                            color: Color.fromARGB(255, 212, 210, 210),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: height * .02),
-              SizedBox(height: height * .06),
-              ElevatedButton(
-                style: ButtonStyle(
-                  minimumSize: MaterialStatePropertyAll(
-                    Size(double.infinity, height * .06),
-                  ),
-                  elevation: const MaterialStatePropertyAll(0),
-                  backgroundColor: const MaterialStatePropertyAll(
-                    Color(0xffF160AE),
-                  ),
-                  foregroundColor: const MaterialStatePropertyAll(Colors.white),
+              MyButton(
+                outline: true,
+                leading: Image.asset(
+                  'assets/images/google.png',
+                  width: 20,
+                  height: 20,
                 ),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, SignUp.routeName);
-                },
-                child: Text(
-                  'Register',
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  ),
-                ),
+                title: 'Google',
+                onTap: () {},
               ),
             ],
           ),

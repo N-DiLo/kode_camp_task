@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kode_camp_task/components/my_button.dart';
+import 'package:kode_camp_task/components/my_text_widget.dart';
 import 'package:kode_camp_task/task_3/sign_up.dart';
 
 class OnBoard extends StatefulWidget {
@@ -59,36 +61,20 @@ class _OnBoardState extends State<OnBoard> {
                     ),
                   ]),
             ),
-            Text(
+            const MyText(
               textAlign: TextAlign.center,
-              'Find an administrative tool powered by KodeCamp to solve all you To-Dos.',
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-              ),
+              softwrap: true,
+              text:
+                  'Find an administrative tool powered by KodeCamp to solve all you To-Dos.',
+              fontWeight: FontWeight.w400,
+              color: Colors.black,
+              fontSize: 14,
             ),
             SizedBox(height: height * .08),
-            ElevatedButton(
-              style: ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(
-                  Size(double.infinity, height * .06),
-                ),
-                elevation: const MaterialStatePropertyAll(0),
-                backgroundColor: const MaterialStatePropertyAll(
-                  Color(0xffF160AE),
-                ),
-                foregroundColor: const MaterialStatePropertyAll(Colors.white),
-              ),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, SignUp.routeName);
-              },
-              child: Text(
-                'Continue',
-                style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                ),
-              ),
+            MyButton(
+              title: 'Continue',
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, SignUp.routeName),
             ),
             SizedBox(height: height * .04),
             Text.rich(
