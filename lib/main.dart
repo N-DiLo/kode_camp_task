@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kode_camp_task/new_task.dart';
+import 'package:kode_camp_task/task_2/new_task.dart';
 
 void main() {
   runApp(const MyApp());
