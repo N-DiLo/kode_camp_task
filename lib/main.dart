@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kode_camp_task/components/my_button.dart';
 
 import 'package:kode_camp_task/task_3/no_login.dart';
 import 'package:kode_camp_task/task_3/onboard.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xffF160AE),
+          seedColor: primaryColor,
         ),
         useMaterial3: true,
       ),

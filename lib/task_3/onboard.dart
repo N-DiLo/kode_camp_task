@@ -25,7 +25,7 @@ class _OnBoardState extends State<OnBoard> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Image.asset('assets/images/startup.png'),
+              child: Image.asset(startup),
             ),
             SizedBox(height: height * .06),
             Text.rich(
@@ -49,7 +49,7 @@ class _OnBoardState extends State<OnBoard> {
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.w700,
                         fontSize: 25,
-                        color: const Color(0xffF160AE),
+                        color: primaryColor,
                       ),
                     ),
                     TextSpan(

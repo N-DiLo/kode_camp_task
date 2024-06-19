@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kode_camp_task/components/my_button.dart';
 import 'package:kode_camp_task/task_3/sign_up.dart';
 
 class NoLogin extends StatelessWidget {
@@ -24,7 +25,7 @@ class NoLogin extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/startled.png'),
+            Image.asset(startled),
             const SizedBox(height: 20),
             Text(
               'Oops... No Login found!',
@@ -36,6 +37,7 @@ class NoLogin extends StatelessWidget {
             const SizedBox(height: 20),
             TextButton(
               onPressed: () {
+                Navigator.pop(context);
                 Navigator.pushReplacementNamed(context, SignUp.routeName);
               },
               child: Text(

@@ -43,9 +43,9 @@ class MyButton extends StatelessWidget {
             width: outline ? 1.0 : 0.0,
             color: outline
                 ? const Color.fromARGB(255, 212, 210, 210)
-                : const Color(0xffF160AE),
+                : primaryColor,
           ),
-          color: outline ? Colors.white : const Color(0xffF160AE),
+          color: outline ? Colors.white : primaryColor,
         ),
         child: Center(
           child: Row(
@@ -68,3 +68,11 @@ class MyButton extends StatelessWidget {
     );
   }
 }
+
+//Konstant color values
+const primaryColor = Color(0xff6C63FF);
+const optionalColor = Color(0xffF160AE);
+
+//Konstant values for Images used in app
+const startled = 'assets/images/startled.png';
+const startup = 'assets/images/startup.png';
