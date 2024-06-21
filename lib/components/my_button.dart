@@ -78,3 +78,5 @@ const textColor = Colors.black;
 //Konstant values for Images used in app
 const startled = 'assets/images/startled.png';
 const startup = 'assets/images/startup.png';
+const taskDone = 'assets/images/task_done.png';
+const menu = 'assets/images/menu.png';

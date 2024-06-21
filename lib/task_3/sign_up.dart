@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kode_camp_task/components/my_button.dart';
 import 'package:kode_camp_task/components/my_input_field.dart';
 import 'package:kode_camp_task/components/my_text_widget.dart';
-import 'package:kode_camp_task/task_3/home_page.dart';
+import 'package:kode_camp_task/task_3/bottom_nav.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -15,6 +15,18 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final pswController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    pswController.dispose();
+    super.dispose();
+  }
+
   bool accepted = false;
   bool hidePass = true;
 
@@ -43,20 +55,20 @@ class _SignUpState extends State<SignUp> {
               MyInputField(
                 labelText: 'Name',
                 keyType: TextInputType.name,
-                onChanged: (p0) {},
+                controller: nameController,
               ),
               SizedBox(height: height * .03),
               MyInputField(
                 labelText: 'Email',
                 keyType: TextInputType.emailAddress,
-                onChanged: (p0) {},
+                controller: emailController,
               ),
               SizedBox(height: height * .03),
               MyInputField(
                 labelText: 'Password',
                 keyType: TextInputType.visiblePassword,
                 isPassword: hidePass,
-                onChanged: (p0) {},
+                controller: pswController,
                 suffixIcon: Icon(
                   hidePass
                       ? Icons.visibility_outlined
@@ -112,7 +124,7 @@ class _SignUpState extends State<SignUp> {
                 onTap: () {
                   Navigator.pushReplacementNamed(
                     context,
-                    HomePage.routeName,
+                    BottomNav.routeName,
                   );
                 },
               ),

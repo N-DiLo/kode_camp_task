@@ -131,10 +131,18 @@ class _HomePageState extends State<HomePage> {
                     shrinkWrap: true,
                     itemCount: avTasks.length,
                     itemBuilder: (context, index) => TaskTile(
-                        isDone: avTasks[index][2],
-                        taskTitle: avTasks[index][0],
-                        taskSubtitle: avTasks[index][1],
-                        onChanged: (isSelected) {}),
+                      isDone: avTasks[index][2],
+                      taskTitle: avTasks[index][0],
+                      taskSubtitle: avTasks[index][1],
+                      onChanged: (isSelected) {
+                        taskDone(isSelected, index);
+                      },
+                      isDeleted: (task) {
+                        setState(() {
+                          avTasks.removeAt(index);
+                        });
+                      },
+                    ),
                   ),
                 ),
               )
