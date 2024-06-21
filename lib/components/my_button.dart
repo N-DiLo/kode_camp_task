@@ -72,6 +72,8 @@ class MyButton extends StatelessWidget {
 //Konstant color values
 const primaryColor = Color(0xff6C63FF);
 const optionalColor = Color(0xffF160AE);
+const whiteColor = Colors.white;
+const textColor = Colors.black;
 
 //Konstant values for Images used in app
 const startled = 'assets/images/startled.png';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kode_camp_task/components/my_button.dart';
 
@@ -43,6 +42,7 @@ class MyInputField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          controller: controller,
           keyboardType: keyType,
           obscureText: isPassword,
           validator: validator,

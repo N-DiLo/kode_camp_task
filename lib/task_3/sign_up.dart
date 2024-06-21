@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kode_camp_task/components/my_button.dart';
 import 'package:kode_camp_task/components/my_input_field.dart';
 import 'package:kode_camp_task/components/my_text_widget.dart';
+import 'package:kode_camp_task/task_3/home_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -108,7 +109,12 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: height * .04),
               MyButton(
                 title: 'Register',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    HomePage.routeName,
+                  );
+                },
               ),
               SizedBox(height: height * .02),
               Center(

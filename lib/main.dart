@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kode_camp_task/components/my_button.dart';
+import 'package:kode_camp_task/task_3/home_page.dart';
 
 import 'package:kode_camp_task/task_3/no_login.dart';
 import 'package:kode_camp_task/task_3/onboard.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SignUp.routeName: (context) => const SignUp(),
         NoLogin.routeName: (context) => const NoLogin(),
+        HomePage.routeName: (context) => const HomePage(),
       },
     );
   }

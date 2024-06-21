@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyText extends StatelessWidget {
-  final TextStyle? style;
   final String text;
   final FontWeight? fontWeight;
   final double? fontSize;
@@ -13,7 +12,6 @@ class MyText extends StatelessWidget {
   const MyText({
     super.key,
     this.textAlign,
-    this.style,
     required this.text,
     this.fontSize,
     this.fontWeight,
