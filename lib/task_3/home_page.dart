@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //Predifined List
   List avTasks = [
     ['E-Learning App', 'Design Onboarding Page', false],
     ['Car Rental Website', 'Coding for Landing Page', false],
@@ -26,13 +27,7 @@ class _HomePageState extends State<HomePage> {
   final controller = TextEditingController();
   final subController = TextEditingController();
 
-  @override
-  void dispose() {
-    controller.dispose();
-    subController.dispose();
-    super.dispose();
-  }
-
+  //Create a new task
   void createTask() {
     if (controller.text.isNotEmpty || subController.text.isNotEmpty) {
       setState(() {
@@ -56,10 +51,23 @@ class _HomePageState extends State<HomePage> {
     Navigator.pop(context);
   }
 
+  //Complete task
+  void taskDone(bool? isSelected, int index) => setState(() {
+        avTasks[index][2] = !avTasks[index][2];
+      });
+
+  @override
+  void dispose() {
+    controller.dispose();
+    subController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           shape: RoundedRectangleBorder(
@@ -72,10 +80,9 @@ class _HomePageState extends State<HomePage> {
               color: whiteColor,
             ),
           ),
-          onPressed: () => showModalBottomSheet(
+          onPressed: () => showDialog(
                 context: context,
-                isScrollControlled: true,
-                isDismissible: false,
+                barrierDismissible: false,
                 builder: (_) => AddTask(
                   controller: controller,
                   subController: subController,

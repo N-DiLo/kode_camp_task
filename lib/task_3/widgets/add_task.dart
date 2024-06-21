@@ -18,20 +18,18 @@ class AddTask extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
-    return Container(
-      padding: const EdgeInsets.all(15),
-      decoration: const BoxDecoration(
-        color: whiteColor,
+    return AlertDialog(
+      contentPadding: const EdgeInsets.all(15.0),
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.horizontal(
           left: Radius.circular(20),
           right: Radius.circular(20),
         ),
       ),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: height * .6,
-          maxWidth: width,
-        ),
+
+      content: SizedBox(
+        height: height * .45,
+        width: width,
         child: Column(
           children: [
             SizedBox(height: height * .02),
@@ -61,6 +59,7 @@ class AddTask extends StatelessWidget {
           ],
         ),
       ),
+      // ),
     );
   }
 }
