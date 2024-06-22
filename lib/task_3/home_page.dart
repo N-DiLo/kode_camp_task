@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:kode_camp_task/components/app_text_styles.dart';
 import 'package:kode_camp_task/components/my_button.dart';
@@ -70,6 +71,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //Adding current Date to app
+    DateTime date = DateTime.now();
+    String showDate = DateFormat('E, MMM dd').format(date);
+
+    //Name of the user during registeraton
     final nameArgs = ModalRoute.of(context)!.settings.arguments as NameArgs;
     final userName = nameArgs.name;
 
@@ -103,7 +109,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         title: Text.rich(
           TextSpan(
-            text: 'Jun 17\n',
+            text: '$showDate\n',
             style: bodySmall,
             children: [
               TextSpan(
