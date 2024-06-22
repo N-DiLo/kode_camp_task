@@ -16,6 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //Passing provided name from the sign up screen
+
   //Predifined List
   List avTasks = [
     ['E-Learning App', 'Design Onboarding Page', false],
@@ -29,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   //Create a new task
   void createTask() {
-    if (controller.text.isNotEmpty || subController.text.isNotEmpty) {
+    if (controller.text.isNotEmpty && subController.text.isNotEmpty) {
       setState(() {
         avTasks.add([controller.text, subController.text, false]);
         controller.clear();
@@ -51,9 +53,12 @@ class _HomePageState extends State<HomePage> {
     Navigator.pop(context);
   }
 
+  int isComplete = 0;
   //Complete task
   void taskDone(bool? isSelected, int index) => setState(() {
         avTasks[index][2] = !avTasks[index][2];
+
+        isSelected != true ? isComplete = 0 : isComplete++;
       });
 
   @override
@@ -65,6 +70,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final nameArgs = ModalRoute.of(context)!.settings.arguments as NameArgs;
+    final userName = nameArgs.name;
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
@@ -90,13 +98,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               )),
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         backgroundColor: const Color.fromARGB(255, 251, 251, 251),
         automaticallyImplyLeading: false,
         title: Text.rich(
           TextSpan(
             text: 'Jun 17\n',
             style: bodySmall,
-            children: [TextSpan(text: 'Hello, 👋', style: bodyLarge)],
+            children: [
+              TextSpan(
+                  text:
+                      'Hello, ${userName.substring(0, userName.indexOf(' '))}👋',
+                  style: bodyLarge)
+            ],
           ),
         ),
         actions: [
@@ -116,7 +130,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: height * .02),
               HeaderWidget(
                 taskNo: '${avTasks.length}',
-                completedTask: '2',
+                completedTask: '$isComplete',
               ),
               SizedBox(height: height * 0.03),
               const MyText(

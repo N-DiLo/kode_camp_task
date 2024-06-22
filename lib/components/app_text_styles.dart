@@ -16,3 +16,8 @@ final TextStyle bodyLarge = GoogleFonts.montserrat(
   fontWeight: FontWeight.w600,
   color: Colors.black,
 );
+
+class NameArgs {
+  String name;
+  NameArgs(this.name);
+}

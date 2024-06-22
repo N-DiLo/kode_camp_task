@@ -14,6 +14,7 @@ class MyInputField extends StatelessWidget {
   final String labelText;
   final String? hintText;
   final Widget? suffixIcon;
+  final AutovalidateMode? autovalidate;
   final void Function()? iconPressed;
 
   const MyInputField({
@@ -28,6 +29,7 @@ class MyInputField extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.iconPressed,
+    this.autovalidate,
   });
 
   @override
@@ -42,6 +44,7 @@ class MyInputField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          autovalidateMode: autovalidate,
           controller: controller,
           keyboardType: keyType,
           obscureText: isPassword,
