@@ -145,15 +145,25 @@ class _SignUpState extends State<SignUp> {
                   onTap: () {
                     formKey.currentState!.validate();
                     if (emailController.text.isEmpty ||
-                        nameController.text.isEmpty ||
-                        accepted == false) {
+                        nameController.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           margin: EdgeInsets.all(10.0),
                           behavior: SnackBarBehavior.floating,
                           content: Center(
-                            child: MyText(
-                                text: 'Complete required fields & Accept T&C'),
+                            child: MyText(text: 'Complete required fields'),
+                          ),
+                        ),
+                      );
+                      return;
+                    }
+                    if (accepted == false) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          margin: EdgeInsets.all(10.0),
+                          behavior: SnackBarBehavior.floating,
+                          content: Center(
+                            child: MyText(text: 'Accept Terms & Conditions'),
                           ),
                         ),
                       );

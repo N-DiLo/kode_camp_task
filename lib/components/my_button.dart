@@ -80,3 +80,4 @@ const startled = 'assets/images/startled.png';
 const startup = 'assets/images/startup.png';
 const taskDone = 'assets/images/task_done.png';
 const menu = 'assets/images/menu.png';
+const taskCal = 'assets/images/calendar.png';

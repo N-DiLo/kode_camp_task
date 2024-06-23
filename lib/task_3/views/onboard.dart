@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kode_camp_task/components/my_button.dart';
 import 'package:kode_camp_task/components/my_text_widget.dart';
-import 'package:kode_camp_task/task_3/sign_up.dart';
+import 'package:kode_camp_task/task_3/views/sign_up.dart';
 
 class OnBoard extends StatefulWidget {
   const OnBoard({super.key});

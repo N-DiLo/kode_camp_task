@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kode_camp_task/components/app_text_styles.dart';
 import 'package:kode_camp_task/components/menu_screen.dart';
 import 'package:kode_camp_task/components/my_button.dart';
-import 'package:kode_camp_task/task_3/home_page.dart';
-import 'package:kode_camp_task/task_3/task_menu.dart';
+import 'package:kode_camp_task/task_3/views/home_page.dart';
+import 'package:kode_camp_task/task_3/views/task_cal.dart';
+import 'package:kode_camp_task/task_3/views/task_menu.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -18,6 +20,7 @@ class _BottomNavState extends State<BottomNav> {
   final appScreens = [
     const HomePage(),
     const TaskMenu(),
+    const TaskCalendar(),
     const MenuScreen(),
   ];
 
@@ -31,6 +34,11 @@ class _BottomNavState extends State<BottomNav> {
                 currentIndex = index;
               }),
           backgroundColor: whiteColor,
+          selectedLabelStyle: bodyMedium,
+          showUnselectedLabels: true,
+          selectedItemColor: primaryColor,
+          unselectedLabelStyle: bodySmall,
+          unselectedItemColor: Colors.black26,
           unselectedFontSize: 12,
           selectedFontSize: 14,
           items: const [
@@ -41,6 +49,10 @@ class _BottomNavState extends State<BottomNav> {
             BottomNavigationBarItem(
               label: 'Task Done',
               icon: Icon(Icons.task_outlined),
+            ),
+            BottomNavigationBarItem(
+              label: 'Calendar',
+              icon: Icon(Icons.calendar_month_outlined),
             ),
             BottomNavigationBarItem(
               label: 'Menu',

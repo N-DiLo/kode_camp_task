@@ -6,7 +6,7 @@ import 'package:kode_camp_task/components/my_button.dart';
 import 'package:kode_camp_task/components/my_text_widget.dart';
 import 'package:kode_camp_task/task_3/widgets/add_task.dart';
 import 'package:kode_camp_task/task_3/widgets/task_tile.dart';
-import 'widgets/header_widget.dart';
+import '../widgets/header_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kode_camp_task/components/my_button.dart';
 import 'package:kode_camp_task/task_3/bottom_nav.dart';
-import 'package:kode_camp_task/task_3/home_page.dart';
+import 'package:kode_camp_task/task_3/views/home_page.dart';
 
-import 'package:kode_camp_task/task_3/no_login.dart';
-import 'package:kode_camp_task/task_3/onboard.dart';
-import 'package:kode_camp_task/task_3/sign_up.dart';
+import 'package:kode_camp_task/task_3/views/no_login.dart';
+import 'package:kode_camp_task/task_3/views/onboard.dart';
+import 'package:kode_camp_task/task_3/views/sign_up.dart';
 
 void main() {
   runApp(const MyApp());
