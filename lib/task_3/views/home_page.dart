@@ -54,6 +54,31 @@ class _HomePageState extends State<HomePage> {
     Navigator.pop(context);
   }
 
+  void editTask(int index) {
+    if (controller.text.isNotEmpty && subController.text.isNotEmpty) {
+      setState(() {
+        avTasks[index][0] = controller.text;
+        avTasks[index][1] = subController.text;
+        avTasks[index][2] = false;
+        controller.clear();
+        subController.clear();
+      });
+    } else if (controller.text.isEmpty || subController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          content: Center(
+            child: MyText(
+              text: 'No value provided for Task title or subtitle',
+            ),
+          ),
+        ),
+      );
+    }
+    Navigator.pop(context);
+  }
+
   int isComplete = 0;
   //Complete task
   void taskDone(bool? isSelected, int index) => setState(() {
@@ -131,6 +156,7 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .05),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: height * .02),
@@ -144,9 +170,9 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
-              SizedBox(
-                height: height * .7,
-                child: Flexible(
+              Flexible(
+                child: SizedBox(
+                  height: height * .7,
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: avTasks.length,
@@ -161,6 +187,17 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           avTasks.removeAt(index);
                         });
+                      },
+                      isEdited: (task) {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (_) => AddTask(
+                            controller: controller,
+                            subController: subController,
+                            onTap: () => editTask(index),
+                          ),
+                        );
                       },
                     ),
                   ),

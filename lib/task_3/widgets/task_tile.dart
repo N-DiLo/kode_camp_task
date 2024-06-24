@@ -11,6 +11,7 @@ class TaskTile extends StatelessWidget {
     required this.taskSubtitle,
     required this.onChanged,
     required this.isDeleted,
+    required this.isEdited,
   });
 
   final bool isDone;
@@ -18,6 +19,7 @@ class TaskTile extends StatelessWidget {
   final String taskSubtitle;
   final void Function(bool?) onChanged;
   final void Function(BuildContext)? isDeleted;
+  final void Function(BuildContext)? isEdited;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,15 @@ class TaskTile extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: isDeleted,
+            label: 'Delete Task',
             backgroundColor: Colors.red,
             icon: Icons.delete_outlined,
+          ),
+          SlidableAction(
+            onPressed: isEdited,
+            label: 'Edit Task',
+            backgroundColor: Colors.blue,
+            icon: Icons.edit_outlined,
           ),
         ],
       ),

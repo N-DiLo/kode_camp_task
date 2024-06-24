@@ -35,8 +35,8 @@ class _SignUpState extends State<SignUp> {
   String? checkEmail(String? email) {
     RegExp forEmail =
         RegExp(r'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})?$');
-    final validEmail = forEmail.hasMatch(email ?? '');
-    if (!validEmail) {
+    final isValid = forEmail.hasMatch(email ?? '');
+    if (!isValid) {
       return 'Please enter a valid mailing address';
     }
     return null;
@@ -84,9 +84,10 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: height * .03),
                 MyInputField(
                   labelText: 'Password',
-                  validator: (password) => password!.length < 8
-                      ? 'Password must be eight characters or more'
-                      : null,
+                  validator: (password) =>
+                      password!.isEmpty || password.length < 8
+                          ? 'Password must be eight characters or more'
+                          : null,
                   keyType: TextInputType.visiblePassword,
                   isPassword: hidePass,
                   controller: pswController,
@@ -143,9 +144,8 @@ class _SignUpState extends State<SignUp> {
                 MyButton(
                   title: 'Register',
                   onTap: () {
-                    formKey.currentState!.validate();
-                    if (emailController.text.isEmpty ||
-                        nameController.text.isEmpty) {
+                    final checkValidation = formKey.currentState!.validate();
+                    if (!checkValidation) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           margin: EdgeInsets.all(10.0),
@@ -169,12 +169,13 @@ class _SignUpState extends State<SignUp> {
                       );
                       return;
                     }
-
-                    Navigator.pushReplacementNamed(
-                      arguments: NameArgs(nameController.text),
-                      context,
-                      BottomNav.routeName,
-                    );
+                    if (checkValidation && accepted == true) {
+                      Navigator.pushReplacementNamed(
+                        arguments: NameArgs(nameController.text),
+                        context,
+                        BottomNav.routeName,
+                      );
+                    }
                   },
                 ),
                 SizedBox(height: height * .02),
