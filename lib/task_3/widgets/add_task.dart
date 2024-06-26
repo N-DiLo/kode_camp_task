@@ -8,11 +8,15 @@ class AddTask extends StatelessWidget {
     required this.onTap,
     required this.controller,
     required this.subController,
+    this.isEdit = false,
   });
 
   final void Function()? onTap;
+
+  final bool isEdit;
   final TextEditingController controller;
   final TextEditingController subController;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -35,20 +39,21 @@ class AddTask extends StatelessWidget {
             SizedBox(height: height * .02),
             MyInputField(
               controller: controller,
-              hintText: 'Add a new task',
+              hintText: isEdit ? 'Edit this task' : 'Add a new task',
               labelText: 'Task Title',
               keyType: TextInputType.text,
             ),
             SizedBox(height: height * .02),
             MyInputField(
               controller: subController,
-              hintText: 'Add a new task subtitle',
+              hintText:
+                  isEdit ? 'Edit task subtitle' : 'Add a new task subtitle',
               labelText: 'Task Subtitle',
               keyType: TextInputType.text,
             ),
             SizedBox(height: height * .05),
             MyButton(
-              title: 'Add Task',
+              title: isEdit ? 'Edit Task' : 'Add Task',
               onTap: onTap,
             ),
             SizedBox(height: height * .03),

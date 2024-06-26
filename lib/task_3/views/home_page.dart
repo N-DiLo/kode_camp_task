@@ -59,7 +59,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         avTasks[index][0] = controller.text;
         avTasks[index][1] = subController.text;
-        avTasks[index][2] = false;
         controller.clear();
         subController.clear();
       });
@@ -189,13 +188,18 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                       isEdited: (task) {
+                        controller.text = avTasks[index][0];
+                        subController.text = avTasks[index][1];
                         showDialog(
                           context: context,
                           barrierDismissible: false,
                           builder: (_) => AddTask(
+                            isEdit: true,
                             controller: controller,
                             subController: subController,
-                            onTap: () => editTask(index),
+                            onTap: () {
+                              editTask(index);
+                            },
                           ),
                         );
                       },
